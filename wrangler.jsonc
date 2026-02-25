@@ -13,8 +13,8 @@
   "d1_databases": [
     {
       "binding": "DB",
-      "database_name": "circle-db",
-      "database_id": "placeholder",
+      "database_name": "circle",
+      "database_id": "3609c825-c3a4-4b99-ae83-8309d2b5bb45",
       "migrations_dir": "migrations"
     }
   ]
