@@ -9,5 +9,13 @@
   "assets": {
     "directory": ".open-next/assets",
     "binding": "ASSETS"
-  }
+  },
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "circle-db",
+      "database_id": "placeholder",
+      "migrations_dir": "migrations"
+    }
+  ]
 }

@@ -18,6 +18,8 @@ Project management interface inspired by Linear. Built with Next.js and shadcn/u
 - **Language**: [TypeScript](https://www.typescriptlang.org/)
 - **UI Components**: [shadcn/ui](https://ui.shadcn.com/)
 - **Styling**: [Tailwind CSS](https://tailwindcss.com/)
+- **Database**: [Cloudflare D1](https://developers.cloudflare.com/d1/) (SQLite)
+- **ORM**: [Drizzle ORM](https://orm.drizzle.team/)
 - **Deployment**: [Cloudflare Workers/Pages](https://developers.cloudflare.com/workers/)
 
 ## 📦 Installation
@@ -44,6 +46,57 @@ npm run dev
 # or
 pnpm dev
 ```
+
+## 🗄️ Database Setup
+
+This app uses Cloudflare D1 (SQLite) with Drizzle ORM for data persistence.
+
+### Create D1 Database
+
+First, create a D1 database in your Cloudflare account:
+
+```shell
+npx wrangler d1 create circle-db
+```
+
+Copy the `database_id` from the output and update it in `wrangler.jsonc`:
+
+```jsonc
+"d1_databases": [
+  {
+    "binding": "DB",
+    "database_name": "circle-db",
+    "database_id": "YOUR_DATABASE_ID_HERE",
+    "migrations_dir": "migrations"
+  }
+]
+```
+
+### Run Migrations
+
+Apply database migrations:
+
+```shell
+# For local development
+npm run db:migrate:local
+
+# For production
+npm run db:migrate:remote
+```
+
+### Seed the Database
+
+Populate with initial data:
+
+```shell
+# For local development
+npm run db:seed:local
+
+# For production
+npm run db:seed:remote
+```
+
+For more detailed database documentation, see [lib/db/README.md](lib/db/README.md).
 
 ## ☁️ Cloudflare Deployment
 
