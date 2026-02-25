@@ -1,17 +1,6 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import { Toaster } from '@/components/ui/sonner';
 import './globals.css';
-
-const geistSans = Geist({
-   variable: '--font-geist-sans',
-   subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-   variable: '--font-geist-mono',
-   subsets: ['latin'],
-});
 
 const siteUrl = 'https://circle.lndev.me';
 
@@ -65,7 +54,7 @@ export default function RootLayout({
          <head>
             <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
          </head>
-         <body className={`${geistSans.variable} ${geistMono.variable} antialiased bg-background`}>
+         <body className="antialiased bg-background" style={{ fontFamily: 'var(--font-geist-sans)', ['--font-geist-sans']: 'system-ui, -apple-system, sans-serif', ['--font-geist-mono']: 'ui-monospace, monospace' } as React.CSSProperties}>
             <ThemeProvider attribute="class" defaultTheme="dark" enableSystem>
                {children}
                <Toaster />
